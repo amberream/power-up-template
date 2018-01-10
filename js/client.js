@@ -250,6 +250,10 @@ var cardButtonCallback = function(t){
   */
 };
 
+var youTubeButtonCallback = function(t) {
+  // TODO 
+}
+
 // We need to call initialize to get all of our capability handles set up and registered with Trello
 TrelloPowerUp.initialize({
   // NOTE about asynchronous responses
@@ -338,11 +342,10 @@ TrelloPowerUp.initialize({
       text: 'Open Popup',
       callback: cardButtonCallback
     }, {
-      // but of course, you could also just kick off to a url if that's your thing
+      // YouTube!
       icon: GRAY_ICON,
-      text: 'Just a URL',
-      url: 'https://developers.trello.com',
-      target: 'Trello Developer Site' // optional target for above url
+      text: 'YouTube',
+      callback: youTubeButtonCallback
     }];
   },
   'card-detail-badges': function(t, options) {
