@@ -251,7 +251,48 @@ var cardButtonCallback = function(t){
 };
 
 var youTubeButtonCallback = function(t) {
-  // TODO 
+  // we need to do a YouTube search
+  // since we don't have all the information up front,
+  // instead of giving Trello an array of `items` you can give it a function instead
+  
+  return t.popup({
+    title: 'Popup Async Search',
+    items: function(t, options) {
+        
+      // use options.search which is the search text entered so far
+      // return a Promise that resolves to an array of items
+      // similar to the items you provided in the client side version above
+      return new Promise(function (resolve) {
+        // you'd probably be making a network request at this point
+         
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search",
+            data: {
+                maxResults: '25',
+                q: options.search,
+                type: 'video'
+            },
+            success: function( data ) {
+                console.log(data);
+                resolve([{
+                    text: 'Result 1',
+                    callback: function (t, opts) { ... }
+                    }, {
+                    text: 'Result 2',
+                    callback: function (t, opts) { ... }
+                }]);
+            }
+        });
+                
+      });
+    },
+    search: {
+      placeholder: 'Start typing your search',
+      empty: 'Huh, nothing there',
+      searching: 'Scouring the internet...'
+    }
+  });
+  
 }
 
 // We need to call initialize to get all of our capability handles set up and registered with Trello
