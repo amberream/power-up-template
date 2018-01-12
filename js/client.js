@@ -270,7 +270,9 @@ var youTubeButtonCallback = function(t) {
             data: {
                 maxResults: '25',
                 q: options.search,
-                type: 'video'
+                type: 'video',
+                part: 'snippet',
+                key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
             },
             success: function( data ) {
                 console.log(data);
@@ -281,6 +283,9 @@ var youTubeButtonCallback = function(t) {
                     text: 'Result 2',
                     callback: function (t, opts) { ... }
                 }]);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
             }
         });
                 
