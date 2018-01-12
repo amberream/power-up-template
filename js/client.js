@@ -251,6 +251,40 @@ var cardButtonCallback = function(t){
 };
 
 var youTubeButtonCallback = function(t) {
+    
+    return t.popup({
+    title: 'Pull Requests',
+    items: function (t, options) {
+      // use options.search which is the search text entered so far
+      // return a Promise that resolves to an array of items
+      // similar to the items you provided in the client side version above
+      return new Promise(function (resolve) {
+        // you'd probably be making a network request at this point
+        resolve([{
+          text: 'Result 1',
+          callback: function (t, opts) { }
+        }, {
+          text: 'Result 2',
+          callback: function (t, opts) { }
+        }]);
+      });
+    },
+    search: {
+      // optional # of ms to debounce search to
+      // defaults to 300, override must be larger than 300
+      debounce: 300,
+      placeholder: 'Search pull requests',
+      empty: 'No pull requests found',
+      searching: 'Searching GitHub...'
+    }
+  });
+    
+    
+    
+    
+    
+    
+    
   // we need to do a YouTube search
   // since we don't have all the information up front,
   // instead of giving Trello an array of `items` you can give it a function instead
@@ -295,50 +329,7 @@ var youTubeButtonCallback = function(t) {
   });
   */
     
-    var items = ['acad', 'arch', 'badl', 'crla', 'grca', 'yell', 'yose'].map(function(parkCode){
-    var urlForCode = 'http://www.nps.gov/' + parkCode + '/';
-    var nameForCode = '🏞 ' + parkCode.toUpperCase();
-    return {
-      text: nameForCode,
-      url: urlForCode,
-      callback: function(t){
-        // In this case we want to attach that park to the card as an attachment
-        // but first let's ensure that the user can write on this model
-        if (t.memberCanWriteToModel('card')){
-          return t.attach({ url: urlForCode, name: nameForCode })
-          .then(function(){
-            // once that has completed we should tidy up and close the popup
-            return t.closePopup();
-          });
-        } else {
-          console.log("Oh no! You don't have permission to add attachments to this card.")
-          return t.closePopup(); // We're just going to close the popup for now.
-        };
-      }
-    };
-  });
-    
-    
-    return t.popup({
-    title: 'Popup Async Search',
-    items: function(t, options) {
-      // use options.search which is the search text entered so far
-      // and return a Promise that resolves to an array of items
-      // similar to the items you provided in the client side version above
-//        return items;
-        
-        return new Promise(function (resolve) {
-            resolve(items);
-        }
-                
-    },
-    search: {
-      placeholder: 'Start typing your search',
-      empty: 'Huh, nothing there',
-      searching: 'Scouring the internet...'
-    }
-  });
-  
+ 
 }
 
 // We need to call initialize to get all of our capability handles set up and registered with Trello
