@@ -279,12 +279,6 @@ var youTubeButtonCallback = function(t) {
     }
   });
     
-    
-    
-    
-    
-    
-    
   // we need to do a YouTube search
   // since we don't have all the information up front,
   // instead of giving Trello an array of `items` you can give it a function instead
@@ -328,9 +322,7 @@ var youTubeButtonCallback = function(t) {
     }
   });
   */
-    
- 
-}
+};
 
 // We need to call initialize to get all of our capability handles set up and registered with Trello
 TrelloPowerUp.initialize({
