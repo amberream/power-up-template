@@ -276,18 +276,14 @@ var youTubeButtonCallback = function(t) {
             },
             success: function( data ) {
                 console.log(data);
-                resolve([{
-                    text: 'Result 1',
-                    callback: function (t, opts) { ... }
-                    }, {
-                    text: 'Result 2',
-                    callback: function (t, opts) { ... }
-                }]);
+                resolve(items);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
             }
         });
+          
+        resolve(items);
                 
       });
     },
