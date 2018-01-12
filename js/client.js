@@ -265,23 +265,23 @@ var youTubeButtonCallback = function(t) {
       return new Promise(function (resolve) {
         // you'd probably be making a network request at this point
          
-        $.ajax({
-            url: "https://www.googleapis.com/youtube/v3/search",
-            data: {
-                maxResults: '25',
-                q: options.search,
-                type: 'video',
-                part: 'snippet',
-                key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
-            },
-            success: function( data ) {
-                console.log(data);
-                resolve(items);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-            }
-        });
+//        $.ajax({
+//            url: "https://www.googleapis.com/youtube/v3/search",
+//            data: {
+//                maxResults: '25',
+//                q: options.search,
+//                type: 'video',
+//                part: 'snippet',
+//                key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
+//            },
+//            success: function( data ) {
+//                console.log(data);
+//                resolve(items);
+//            },
+//            error: function(jqXHR, textStatus, errorThrown) {
+//                alert(errorThrown);
+//            }
+//        });
           
         resolve(items);
                 
