@@ -325,7 +325,12 @@ var youTubeButtonCallback = function(t) {
       // use options.search which is the search text entered so far
       // and return a Promise that resolves to an array of items
       // similar to the items you provided in the client side version above
-        return items
+//        return items;
+        
+        return new Promise(function (resolve) {
+            resolve(items);
+        }
+                
     },
     search: {
       placeholder: 'Start typing your search',
