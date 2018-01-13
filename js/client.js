@@ -253,7 +253,7 @@ var cardButtonCallback = function(t){
 var youTubeButtonCallback = function(t) {
     
     return t.popup({
-    title: 'Pull Requests',
+    title: 'Test2',
     items: function (t, options) {
       // use options.search which is the search text entered so far
       // return a Promise that resolves to an array of items
@@ -273,9 +273,9 @@ var youTubeButtonCallback = function(t) {
       // optional # of ms to debounce search to
       // defaults to 300, override must be larger than 300
       debounce: 300,
-      placeholder: 'Search pull requests',
-      empty: 'No pull requests found',
-      searching: 'Searching GitHub...'
+      placeholder: 'Test2 Placeholder',
+      empty: 'Test2 Empty',
+      searching: 'Test2 Searching'
     }
   });
     
