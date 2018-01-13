@@ -253,29 +253,61 @@ var cardButtonCallback = function(t){
 var youTubeButtonCallback = function(t) {
     
     return t.popup({
-    title: 'Test2',
-    items: function (t, options) {
+    title: 'Test3',
+//    items: function (t, options) {
+//      // use options.search which is the search text entered so far
+//      // return a Promise that resolves to an array of items
+//      // similar to the items you provided in the client side version above
+//      return new Promise(function (resolve) {
+//        // you'd probably be making a network request at this point
+//        resolve([{
+//          text: 'Result 1',
+//          callback: function (t, opts) { }
+//        }, {
+//          text: 'Result 2',
+//          callback: function (t, opts) { }
+//        }]);
+//      });
+//    },
+    items: function(t, options) {
+        
       // use options.search which is the search text entered so far
       // return a Promise that resolves to an array of items
       // similar to the items you provided in the client side version above
       return new Promise(function (resolve) {
         // you'd probably be making a network request at this point
-        resolve([{
-          text: 'Result 1',
-          callback: function (t, opts) { }
-        }, {
-          text: 'Result 2',
-          callback: function (t, opts) { }
-        }]);
+         
+        $.ajax({
+            url: "https://www.googleapis.com/youtube/v3/search",
+            data: {
+                maxResults: '25',
+                q: options.search,
+                type: 'video',
+                part: 'snippet',
+                key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
+            },
+            success: function( data ) {
+                console.log(data);
+                resolve(items);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+          
+        resolve(items);
+                
       });
     },
+        
+        
     search: {
       // optional # of ms to debounce search to
       // defaults to 300, override must be larger than 300
       debounce: 300,
-      placeholder: 'Test2 Placeholder',
-      empty: 'Test2 Empty',
-      searching: 'Test2 Searching'
+      placeholder: 'Test3 Placeholder',
+      empty: 'Test3 Empty',
+      searching: 'Test3 Searching'
     }
   });
     
@@ -285,36 +317,7 @@ var youTubeButtonCallback = function(t) {
   /*
   return t.popup({
     title: 'Popup Async Search',
-    items: function(t, options) {
-        
-      // use options.search which is the search text entered so far
-      // return a Promise that resolves to an array of items
-      // similar to the items you provided in the client side version above
-      return new Promise(function (resolve) {
-        // you'd probably be making a network request at this point
-         
-//        $.ajax({
-//            url: "https://www.googleapis.com/youtube/v3/search",
-//            data: {
-//                maxResults: '25',
-//                q: options.search,
-//                type: 'video',
-//                part: 'snippet',
-//                key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
-//            },
-//            success: function( data ) {
-//                console.log(data);
-//                resolve(items);
-//            },
-//            error: function(jqXHR, textStatus, errorThrown) {
-//                alert(errorThrown);
-//            }
-//        });
-          
-        resolve(items);
-                
-      });
-    },
+    
     search: {
       placeholder: 'Start typing your search',
       empty: 'Huh, nothing there',
