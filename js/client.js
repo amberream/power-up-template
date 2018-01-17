@@ -290,7 +290,12 @@ var youTubeButtonCallback = function (t) {
                 for (var i = 0; i < items.length; i++) {
                     ret.push({
                         text: items[i].snippet.title,
-                        callback: function (t, opts) {},
+                        callback: function (t, opts) {
+                            return t.attach({
+                                name: items[i].snippet.title, // optional
+                                url: "https://www.youtube.com/watch?v=" + items[i].id.videoId // required
+                            });
+                        },
                         url: "https://www.youtube.com/watch?v=" + items[i].id.videoId
                     });
                 }
