@@ -282,7 +282,7 @@ var youTubeButtonCallback = function(t) {
             console.log(data);
             var ret = new Array();
             var items = data.items;
-            for (int i = 0; i < data.items; i++) {
+            for (var i = 0; i < data.items; i++) {
                 ret.push({
                     text: items[i].snippet.title;
                     callback: function(t, opts){
