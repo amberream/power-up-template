@@ -253,7 +253,7 @@ var cardButtonCallback = function(t){
 var youTubeButtonCallback = function(t) {
     
     return t.popup({
-    title: 'Test6',
+    title: 'Test7',
     items: function(t, options) {
         
       // use options.search which is the search text entered so far
@@ -280,22 +280,33 @@ var youTubeButtonCallback = function(t) {
         // when the response is finished, then return a list of items
         return response.then(function(data){
             console.log(data);
-          return [{
-            text: 'Result 1',
-            callback: function (t, opts) { }
-          }, {
-            text: 'Result 2',
-            callback: function (t, opts) { }
-          }]
+            var ret = new Array();
+            var items = data.items;
+            for (int i = 0; i < data.items; i++) {
+                ret.push({
+                    text: items[i].snippet.title;
+                    callback: function(t, opts){
+                        var url = "https://www.youtube.com/watch?v=" + items[i].id.videoId;
+                    }
+                });
+            }
+            return ret;
+//          return [{
+//            text: 'Result 1',
+//            callback: function (t, opts) { }
+//          }, {
+//            text: 'Result 2',
+//            callback: function (t, opts) { }
+//          }]
         });        
     },  
     search: {
       // optional # of ms to debounce search to
       // defaults to 300, override must be larger than 300
       debounce: 300,
-      placeholder: 'Test6 Placeholder',
-      empty: 'Test6 Empty',
-      searching: 'Test6 Searching'
+      placeholder: 'Test7 Placeholder',
+      empty: 'Test7 Empty',
+      searching: 'Test7 Searching'
     }
   });
     
