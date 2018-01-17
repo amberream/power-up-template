@@ -291,7 +291,7 @@ var youTubeButtonCallback = function (t) {
                     ret.push({
                         text: items[i].snippet.title,
                         callback: function (t, opts) {},
-                        url: "https://www.youtube.com/watch?v=" + items[i].id.videoId;
+                        url: "https://www.youtube.com/watch?v=" + items[i].id.videoId
                     });
                 }
                 console.log(ret);
