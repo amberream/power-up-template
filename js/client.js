@@ -284,7 +284,7 @@ var youTubeButtonCallback = function(t) {
             var items = data.items;
             for (var i = 0; i < items.length; i++) {
                 ret.push({
-                    text: items[i].snippet.title;
+                    text: items[i].snippet.title,
                     callback: function(t, opts){
                         var url = "https://www.youtube.com/watch?v=" + items[i].id.videoId;
                     }
