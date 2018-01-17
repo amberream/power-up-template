@@ -253,28 +253,13 @@ var cardButtonCallback = function(t){
 var youTubeButtonCallback = function(t) {
     
     return t.popup({
-    title: 'Test5',
-//    items: function (t, options) {
-//      // use options.search which is the search text entered so far
-//      // return a Promise that resolves to an array of items
-//      // similar to the items you provided in the client side version above
-//      return new Promise(function (resolve) {
-//        // you'd probably be making a network request at this point
-//        resolve([{
-//          text: 'Result 1',
-//          callback: function (t, opts) { }
-//        }, {
-//          text: 'Result 2',
-//          callback: function (t, opts) { }
-//        }]);
-//      });
-//    },
+    title: 'Test6',
     items: function(t, options) {
         
       // use options.search which is the search text entered so far
       // return a Promise that resolves to an array of items
       // similar to the items you provided in the client side version above
-      
+        console.log("search:" + options.search);
         var response = $.ajax({
             url: "https://www.googleapis.com/youtube/v3/search",
             data: {
@@ -285,7 +270,7 @@ var youTubeButtonCallback = function(t) {
                 key: 'AIzaSyCawso6-SQJS2JAw7FCXQD-sNeLtzDPxE0'
             },
             success: function( data ) {
-                console.log(data);
+//                console.log(data);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
@@ -293,7 +278,8 @@ var youTubeButtonCallback = function(t) {
         });
           
         // when the response is finished, then return a list of items
-        return response.then(function(){            
+        return response.then(function(data){
+            console.log(data);
           return [{
             text: 'Result 1',
             callback: function (t, opts) { }
@@ -307,26 +293,12 @@ var youTubeButtonCallback = function(t) {
       // optional # of ms to debounce search to
       // defaults to 300, override must be larger than 300
       debounce: 300,
-      placeholder: 'Test5 Placeholder',
-      empty: 'Test5 Empty',
-      searching: 'Test5 Searching'
+      placeholder: 'Test6 Placeholder',
+      empty: 'Test6 Empty',
+      searching: 'Test6 Searching'
     }
   });
     
-  // we need to do a YouTube search
-  // since we don't have all the information up front,
-  // instead of giving Trello an array of `items` you can give it a function instead
-  /*
-  return t.popup({
-    title: 'Popup Async Search',
-    
-    search: {
-      placeholder: 'Start typing your search',
-      empty: 'Huh, nothing there',
-      searching: 'Scouring the internet...'
-    }
-  });
-  */
 };
 
 // We need to call initialize to get all of our capability handles set up and registered with Trello
