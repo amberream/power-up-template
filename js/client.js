@@ -290,20 +290,12 @@ var youTubeButtonCallback = function (t) {
                 for (var i = 0; i < items.length; i++) {
                     ret.push({
                         text: items[i].snippet.title,
-                        callback: function (t, opts) {
-                            var url = "https://www.youtube.com/watch?v=" + items[i].id.videoId;
-                        }
+                        callback: function (t, opts) {},
+                        url: "https://www.youtube.com/watch?v=" + items[i].id.videoId;
                     });
                 }
                 console.log(ret);
                 return ret;
-                //          return [{
-                //            text: 'Result 1',
-                //            callback: function (t, opts) { }
-                //          }, {
-                //            text: 'Result 2',
-                //            callback: function (t, opts) { }
-                //          }]
             });
         },
         search: {
