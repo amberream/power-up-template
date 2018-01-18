@@ -332,7 +332,6 @@ TrelloPowerUp.initialize({
             // claim youtube urls
             return attachment.url.indexOf('https://www.youtube.com') === 0;
         });
-        console.log(claimed);
 
         // you can have more than one attachment section on a card
         // you can group items together into one section, have a section
