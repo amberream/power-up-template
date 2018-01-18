@@ -300,7 +300,6 @@ var youTubeButtonCallback = function (t) {
                         })(items[i])
                     });
                 }
-                console.log(ret);
                 //                console.log(ret);
                 return ret;
             });
@@ -332,6 +331,7 @@ TrelloPowerUp.initialize({
         var claimed = options.entries.filter(function (attachment) {
             return attachment.url.indexOf('youtube.com') === 0;
         });
+        console.log(claimed);
 
         // you can have more than one attachment section on a card
         // you can group items together into one section, have a section
