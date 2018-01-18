@@ -16,9 +16,10 @@ t.render(function () {
         })
         .then(function (yellowstoneAttachments) {
             var urls = yellowstoneAttachments.map(function (a) {
-                return a.url;
+                return '<iframe width="560" height="315" src="https://www.youtube.com/embed/7TruhoFdFfg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+                // really use a.url
             });
-            document.getElementById('urls').textContent = urls.join(', ');
+            document.getElementById('videos').textContent = urls.join(' ');
         })
         .then(function () {
             return t.sizeTo('#content');
