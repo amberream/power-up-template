@@ -329,9 +329,8 @@ TrelloPowerUp.initialize({
 
         // we will just claim urls for YouTube
         var claimed = options.entries.filter(function (attachment) {
-            var c = attachment.url.indexOf('youtube.com') == 0;
-            console.log("claim = " + c + ":" + attachment.url);
-            return c;
+            // claim youtube urls
+            return attachment.url.indexOf('https://www.youtube.com') === 0;
         });
         console.log(claimed);
 
