@@ -294,7 +294,7 @@ var youTubeButtonCallback = function (t) {
                             return function (t, opts) {
                                 return t.attach({
                                     name: item.snippet.title, // optional
-                                    url: "https://www.youtube.com/watch?v=" + item.id.videoId // required
+                                    url: "https://www.youtube.com/embed/" + item.id.videoId // required
                                 });
                             }
                         })(items[i])
