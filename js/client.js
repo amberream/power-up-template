@@ -347,9 +347,10 @@ TrelloPowerUp.initialize({
                 title: 'Example Attachment Section: YouTube',
                 content: {
                     type: 'iframe',
-                    url: t.signUrl('./section.html', {
-                        arg: 'you can pass your section args here'
-                    }),
+                    //                    url: t.signUrl('./section.html', {
+                    //                        arg: 'you can pass your section args here'
+                    //                    }),
+                    url: 'https://www.youtube.com/embed/7TruhoFdFfg?rel=0',
                     height: 230
                 }
       }];
