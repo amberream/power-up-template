@@ -12,7 +12,7 @@ t.render(function () {
     t.card('attachments')
         .get('attachments')
         .filter(function (attachment) {
-            return attachment.url.indexOf('http://www.youtube.com/') == 0;
+            return attachment.url.indexOf('youtube.com') == 0;
         })
         .then(function (yellowstoneAttachments) {
             var urls = yellowstoneAttachments.map(function (a) {

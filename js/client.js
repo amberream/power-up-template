@@ -329,7 +329,7 @@ TrelloPowerUp.initialize({
 
         // we will just claim urls for YouTube
         var claimed = options.entries.filter(function (attachment) {
-            return attachment.url.indexOf('http://youtube.com/') === 0;
+            return attachment.url.indexOf('youtube.com') === 0;
         });
 
         // you can have more than one attachment section on a card
