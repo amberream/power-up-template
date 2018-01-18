@@ -284,7 +284,7 @@ var youTubeButtonCallback = function (t) {
 
             // when the response is finished, then return a list of items
             return response.then(function (data) {
-                console.log(data);
+                //                console.log(data);
                 var ret = new Array();
                 var items = data.items;
                 for (var i = 0; i < items.length; i++) {
@@ -301,6 +301,7 @@ var youTubeButtonCallback = function (t) {
                     });
                 }
                 console.log(ret);
+                //                console.log(ret);
                 return ret;
             });
         },
