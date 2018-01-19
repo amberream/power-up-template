@@ -16,7 +16,7 @@ t.render(function () {
         })
         .then(function (youtubeAttachments) {
             var urls = youtubeAttachments.map(function (a) {
-                return '<iframe src="' + a.url + '?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+                return '<div><iframe src="' + a.url + '?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
             });
             document.getElementById('videos').innerHTML = urls.join(' ');
         })
