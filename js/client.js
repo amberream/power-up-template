@@ -77,7 +77,7 @@ t.getAll();
 */
 
 var YOUTUBE_ICON = './images/yt_icon_rgb.png';
-var GRAY_ICON = './images/yt_icon_gray.svg';
+var GRAY_ICON = './images/yt_icon_gray.png';
 
 var youTubeButtonCallback = function (t) {
 
@@ -169,7 +169,7 @@ TrelloPowerUp.initialize({
                 id: 'YouTube', // optional if you aren't using a function for the title
                 claimed: claimed,
                 icon: YOUTUBE_ICON,
-                title: 'Example Attachment Section: YouTube',
+                title: 'YouTube Videos',
                 content: {
                     type: 'iframe',
                     url: t.signUrl('./section.html', {
