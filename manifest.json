@@ -1,28 +1,19 @@
 {
-  "name": "YouTube Power-Up",
-  "description": "A Power-Up for integrating YouTube content in your cards",
-  "details": "This Power-Up is used for integrating YouTube content in your cards",
-  "icon": {
-    "url": "./images/logo.png"
-  },
-  "author": "Amber Ream",
-  "capabilities": [
-    "authorization-status",
+    "name": "YouTube Power-Up",
+    "description": "A Power-Up for integrating YouTube content in your cards",
+    "details": "This Power-Up is used for integrating YouTube content in your cards",
+    "icon": {
+        "url": "./images/yt_icon_rgb.png"
+    },
+    "author": "Amber Ream",
+    "capabilities": [
     "attachment-sections",
-    "attachment-thumbnail",
-    "board-buttons",
     "callback",
-    "card-badges",
-    "card-buttons",
-    "card-detail-badges",
-    "card-from-url",
-    "format-url",
-    "show-authorization",
-    "show-settings"
+    "card-buttons"
   ],
-  "connectors": {
-    "iframe": {
-      "url": "./index.html"
+    "connectors": {
+        "iframe": {
+            "url": "./index.html"
+        }
     }
-  }
 }
