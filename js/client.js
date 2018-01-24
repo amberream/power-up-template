@@ -88,7 +88,12 @@ var youTubeButtonCallback = function (t) {
             // use options.search which is the search text entered so far
             // return a Promise that resolves to an array of items
             // similar to the items you provided in the client side version above
-            console.log("search:" + options.search);
+            
+            // return an empty result set if nothing is typed into the search box
+            if (options.search.trim === "")
+            {
+                return [];
+            }
             var response = $.ajax({
                 url: "https://www.googleapis.com/youtube/v3/search",
                 data: {
