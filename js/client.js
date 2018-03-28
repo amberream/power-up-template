@@ -92,6 +92,7 @@ var youTubeButtonCallback = function (t) {
             // return an empty result set if nothing is typed into the search box
             if (options.search.trim.length == 0)
             {
+                console.log("search:" + options.search + " length:" + options.search.trim.length);
                 return [];
             }
             
