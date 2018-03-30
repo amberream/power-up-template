@@ -26,7 +26,7 @@ t.render(function () {
         });
 });
 
-$(".video-frame").onClick(function(){
+$(".video-frame").click(function(){
     
     console.log("modal url:" + this.attr("src"));
     t.modal({
