@@ -17,7 +17,7 @@ t.render(function () {
         .then(function (youtubeAttachments) {
             var urls = youtubeAttachments.map(function (a) {
 
-                return '<div class="video" onclick="modal('" + a.url + "')"><iframe src="' + a.url + '?rel=0" frameborder="0" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe></div>';
+                return '<div class="video"><iframe class="video-frame" src="' + a.url + '?rel=0" frameborder="0" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe></div>';
             });
             document.getElementById('videos').innerHTML = urls.join(' ');
         })
@@ -26,10 +26,11 @@ t.render(function () {
         });
 });
 
-function modal(url) {
-    console.log("modal url:" + url);
+$(".video-frame").onClick(function(){
+    
+    console.log("modal url:" + this.attr("src"));
     t.modal({
-        url: url,
+        url: this.attr("src"),
         fullscreen: true
     });
-}
+});
