@@ -22,12 +22,15 @@ t.render(function () {
             document.getElementById('videos').innerHTML = urls.join(' ');
 
             // create a youtube player for each video
-            new YT.Player(getVideoId(a.url), {
-                videoId: getVideoId(a.url),
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
+            $(".video").each(function () {
+                new YT.Player(this.attr('id'), {
+                    videoId: this.attr('id'),
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
             });
+
         })
         .then(function () {
             return t.sizeTo('#content');
