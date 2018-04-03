@@ -25,7 +25,6 @@ t.render(function () {
             $(".video").each(function () {
                 var player = new YT.Player($(this).attr('id'), {
                     videoId: $(this).attr('id'),
-                    width: $("#content").width(),
                     events: {
                         'onStateChange': onPlayerStateChange
                     }
@@ -34,9 +33,9 @@ t.render(function () {
             });
 
         })
-        //        .then(function () {
-        //            return t.sizeTo('#content');
-        //        });
+        .then(function () {
+            return t.sizeTo('#content');
+        });
 });
 
 function getVideoId(url) {
@@ -47,7 +46,7 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
         event.target.stopVideo();
         t.modal({
-            url: 'https://youtube.com/embed/' + event.target.videoId + "?autoplay=1",
+            url: 'https://youtube.com/embed/' + event.target.videoId + "?autoplay=1&origin=http://amberream.github.io",
             fullscreen: true
         });
     } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
