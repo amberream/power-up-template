@@ -21,10 +21,13 @@ t.render(function () {
             });
             document.getElementById('videos').innerHTML = urls.join(' ');
 
+            var width = $("#content").width() - 30;
+            var height = width * .75;
             // create a youtube player for each video
             $(".video").each(function () {
                 var player = new YT.Player($(this).attr('id'), {
-                    width: $("#content").width() - 30,
+                    width: width,
+                    height: height,
                     videoId: $(this).attr('id'),
                     events: {
                         'onStateChange': onPlayerStateChange
