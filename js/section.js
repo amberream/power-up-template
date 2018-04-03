@@ -49,7 +49,5 @@ function onPlayerStateChange(event) {
             url: 'https://youtube.com/embed/' + event.target.videoId + "?autoplay=1&origin=https://amberream.github.io",
             fullscreen: true
         });
-    } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-        t.closeModal();
     }
 }
