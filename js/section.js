@@ -25,6 +25,7 @@ t.render(function () {
             $(".video").each(function () {
                 new YT.Player($(this).attr('id'), {
                     videoId: $(this).attr('id'),
+                    width: $("#content").width(),
                     events: {
                         'onStateChange': onPlayerStateChange
                     }
@@ -32,9 +33,9 @@ t.render(function () {
             });
 
         })
-        .then(function () {
-            return t.sizeTo('#content');
-        });
+        //        .then(function () {
+        //            return t.sizeTo('#content');
+        //        });
 });
 
 function getVideoId(url) {
@@ -42,13 +43,13 @@ function getVideoId(url) {
 }
 
 function onPlayerStateChange(event) {
+    console.log("event.target");
+    console.log(event.target);
+    console.log("event.data");
+    console.log(event.data);
     if (event.data == YT.PlayerState.PLAYING) {
-        console.log("getVideoEmbedCode");
-        console.log(event.target.getVideoEmbedCode());
-        console.log("getVideoUrl");
-        console.log(event.target.getVideoUrl);
         t.modal({
-            url: event.target.getVideoEmbedCode(),
+            url: 'https://youtube.com/embed/',
             fullscreen: true
         });
     } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
