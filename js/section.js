@@ -43,6 +43,10 @@ function getVideoId(url) {
 
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
+        conole.log("getVideoEmbedCode");
+        console.log(event.target.getVideoEmbedCode());
+        console.log("getVideoUrl");
+        console.log(event.target.getVideoUrl);
         t.modal({
             url: event.target.getVideoEmbedCode(),
             fullscreen: true
