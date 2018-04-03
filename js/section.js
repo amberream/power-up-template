@@ -46,7 +46,7 @@ function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
         event.target.stopVideo();
         t.modal({
-            url: 'https://youtube.com/embed/' + event.target.videoId + "?autoplay=1&origin=https://amberream.github.io",
+            url: 'https://youtube.com/embed/' + event.target.videoId + '?autoplay=1',
             fullscreen: true
         });
     }
