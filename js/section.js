@@ -23,8 +23,8 @@ t.render(function () {
 
             // create a youtube player for each video
             $(".video").each(function () {
-                new YT.Player(this.attr('id'), {
-                    videoId: this.attr('id'),
+                new YT.Player($(this).attr('id'), {
+                    videoId: $(this).attr('id'),
                     events: {
                         'onStateChange': onPlayerStateChange
                     }
