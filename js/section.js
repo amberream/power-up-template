@@ -23,13 +23,14 @@ t.render(function () {
 
             // create a youtube player for each video
             $(".video").each(function () {
-                new YT.Player($(this).attr('id'), {
+                var player = new YT.Player($(this).attr('id'), {
                     videoId: $(this).attr('id'),
                     width: $("#content").width(),
                     events: {
                         'onStateChange': onPlayerStateChange
                     }
                 });
+                player.videoId = $(this).attr('id');
             });
 
         })
@@ -43,13 +44,9 @@ function getVideoId(url) {
 }
 
 function onPlayerStateChange(event) {
-    console.log("event.target");
-    console.log(event.target);
-    console.log("event.data");
-    console.log(event.data);
     if (event.data == YT.PlayerState.PLAYING) {
         t.modal({
-            url: 'https://youtube.com/embed/',
+            url: 'https://youtube.com/embed/' + event.target.videoId,
             fullscreen: true
         });
     } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
