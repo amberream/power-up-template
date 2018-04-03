@@ -16,21 +16,35 @@ t.render(function () {
         })
         .then(function (youtubeAttachments) {
             var urls = youtubeAttachments.map(function (a) {
-
-                return '<div class="video"><iframe class="video-frame" src="' + a.url + '?rel=0" frameborder="0" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen></iframe></div>';
+                // the youtube api will turn the div into an iframe
+                return '<div class="video" id="' + getVideoId(a.url) + '"></div>';
             });
             document.getElementById('videos').innerHTML = urls.join(' ');
+
+            // create a youtube player for each video
+            new YT.Player('player', {
+                videoId: getVideoId(a.url),
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
         })
         .then(function () {
             return t.sizeTo('#content');
         });
 });
 
-$(".video-frame").click(function(){
-    
-    console.log("modal url:" + this.attr("src"));
-    t.modal({
-        url: this.attr("src"),
-        fullscreen: true
-    });
-});
+function getVideoId(url) {
+    return url.replace('https://www.youtube.com/embed/', '');
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        t.modal({
+            url: this.attr("src"),
+            fullscreen: true
+        });
+    } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        t.closeModal();
+    }
+}
