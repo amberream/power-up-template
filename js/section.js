@@ -44,7 +44,7 @@ function getVideoId(url) {
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
         t.modal({
-            url: this.attr("src"),
+            url: event.target.getVideoUrl(),
             fullscreen: true
         });
     } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
